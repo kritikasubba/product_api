@@ -26,11 +26,11 @@ class Product {
     }
     Map<String, dynamic>? toJson() {
       final Map<String, dynamic> data = new Map<String, dynamic>();
-      data['limit'] = this.limit;
-      data['skip'] = this.skip;
-      data['total'] = this.total;
-      if (this.products != null) {
-        data['products'] = this.products!.map((e) => e.toJson()).toList();
+      data['limit'] = limit;
+      data['skip'] = skip;
+      data['total'] = total;
+      if (products != null) {
+        data['products'] = products!.map((e) => e.toJson()).toList();
         return data;
       }
     }
@@ -78,18 +78,18 @@ class Products {
   }
 
   Map<String, dynamic>? toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['price'] = this.price;
-    data['discountPercentage'] = this.discountPercentage;
-    data['rating'] = this.rating;
-    data['stock'] = this.stock;
-    data['brand'] = this.brand;
-    data['category'] = this.category;
-    data['thumbnail'] = this.thumbnail;
-    data['images'] = this.images;
+    final Map<String, dynamic> data =  Map<String, dynamic>();
+    data['id'] = id;
+    data['title'] = title;
+    data['description'] = description;
+    data['price'] = price;
+    data['discountPercentage'] = discountPercentage;
+    data['rating'] = rating;
+    data['stock'] = stock;
+    data['brand'] = brand;
+    data['category'] = category;
+    data['thumbnail'] = thumbnail;
+    data['images'] =images;
     return data;
   }
 }
