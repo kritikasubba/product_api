@@ -1,65 +1,25 @@
-// import 'package:flutter/material.dart';
-// import 'package:product_api/model/product.dart';
+import 'package:flutter/material.dart';
+import 'package:product_api/provider/auth_provider.dart';
+import 'package:product_api/views/product_api.dart';
 
-// void main() =>
-// runApp(MyApp());
+import 'package:provider/provider.dart';
 
-// class MyApp extends StatefulWidget {
-//   const MyApp({Key? key}) : super(key: key);
+void main() {
+  runApp(const MyApp());
+}
 
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-// class _MyAppState extends State<MyApp> {
-//   Future <List<Products>>? futureData;
-
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//     futureData = fetchData();
-
-//   }
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Scaffold(appBar: AppBar(
-//         title: Text('Product Api'),
-
-//       ),
-//       body: Column(
-//         children: [
-//           FutureBuilder <List<Products>> (
-//             future: futureData,
-//             builder: (context, snapshot)  {
-//               if(snapshot.hasData) {
-//                 List<Products>? data = snapshot.data;
-//                 return ListView.builder(
-//                   itemCount: data!.length,
-//                   itemBuilder: (context, index) => 
-//                      Container(
-//                       height: 75,
-//                       color: Colors.white,
-//                       child: Center(child: Text(data[index].price.toString()),),
-//                     ),
-
-//               );
-              
-//               }
-//               else if (snapshot.hasError) {
-//                 return Text('${snapshot.error}');
-//               }
-//               return CircularProgressIndicator();
-//             }
-            
-
-
-//        ) ],
-//       ),
-//       ),
-      
-//     );
-    
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<AuthProvider>(
+      create: (_) => AuthProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.red),
+        home: const ProductApi(),
+      ),
+    );
+  }
+}

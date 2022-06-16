@@ -1,21 +1,23 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:product_api/model/product.dart';
+import 'package:product_api/views/views.dart';
 
 class AuthProvider extends ChangeNotifier{
-  Future <List<Products>> fetchData() async {
-    var dio = Dio();
-    final response = await dio.get('https://dummyjson.com/products/category/smartphones');
+  Product? _productModel;
 
-    if(response.statusCode == 200 ) {
-      List jsonResponse = jsonDecode(response.data);
-      return jsonResponse.map((e) => Products.fromJson(e)).toList();
+Product? get prodModel {
+  return _productModel;
+}
 
-    }
-    else {
-      throw Exception('unsucessful');
-    }
-  }
+set post(Product? pmodel) {
+  _productModel = pmodel;
+}
+
+getPost() async {
+  _productModel = await fetchData();
+ notifyListeners();
+}
+  
+  
+  
 }
